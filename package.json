@@ -9,8 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "clean": "rm -rf .next",
-    "test": "echo no tests"
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "next": "12.2.4",
