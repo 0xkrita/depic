@@ -1,6 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import AppWrapper from '../components/AppWrapper';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
@@ -10,9 +11,11 @@ const Home: NextPage = () => {
         <meta name="description" content="A Hackathon Project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>Hello World</p>
+      <AppWrapper>
+        <p>So will this paragraph.</p>
+      </AppWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
