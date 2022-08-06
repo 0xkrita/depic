@@ -20,6 +20,7 @@ const Home: NextPage = () => {
           semper eget duis.
         </p>
       </AppWrapper>
+      {/* <WhiteBoard></WhiteBoard> */}
     </div>
   );
 };
