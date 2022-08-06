@@ -3,7 +3,6 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import ConnectWalletButton from './buttons/ConnectWalletButton';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -25,16 +24,15 @@ export default function AppWrapper({ children }: { children: JSX.Element }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider coolMode chains={chains}>
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'right',
             marginTop: '20px',
             marginRight: '20px',
           }}
-        >
-          <ConnectWalletButton></ConnectWalletButton>
-        </div>
+        > */}
+        {/* </div> */}
         {children}
       </RainbowKitProvider>
     </WagmiConfig>
