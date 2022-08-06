@@ -27,7 +27,7 @@ const wagmiClient = createClient({
 export default function AppWrapper({ children }: { children: JSX.Element }) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider coolMode chains={chains}>
         <div
           style={{
             display: 'flex',
