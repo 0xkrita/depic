@@ -13,14 +13,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppWrapper>
-        {/* <p>
+        <>
+          {/* <MintModal></MintModal> */}
+          {/* <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut aliquam
           purus sit amet. Risus nec feugiat in fermentum. Ac felis donec et odio
           pellentesque diam. Aliquam ultrices sagittis orci a scelerisque purus
           semper eget duis.
         </p> */}
-        <DepicConsole></DepicConsole>
+          <DepicConsole></DepicConsole>
+        </>
       </AppWrapper>
     </div>
   );
