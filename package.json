@@ -10,7 +10,7 @@
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "clean": "rm -rf .next",
-    "svg": "svgr -d components/icons public"
+    "svg": "svgr -d components/icons public --typescript --ignore-existing"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.12.0",
