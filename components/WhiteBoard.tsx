@@ -1,8 +1,9 @@
-import { Excalidraw } from '@excalidraw/excalidraw';
+// import { Excalidraw } from '@excalidraw/excalidraw';
+
 export default function WhiteBoard() {
   return (
     <div className="App">
-      <div className="excalidraw-wrapper">
+      {/* <div className="excalidraw-wrapper">
         <Excalidraw
           // ref={excalidrawRef}
           // initialData={InitialData}
@@ -11,7 +12,8 @@ export default function WhiteBoard() {
           }
           onPointerUpdate={(payload) => console.log(payload)}
         />
-      </div>
+      </div> */}
+      {/* <ConnectWalletButton></ConnectWalletButton> */}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import AppWrapper from '../components/AppWrapper';
-import DepicConsole from '../components/icons/DepicConsole';
+import WhiteBoard from '../components/WhiteBoard';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
@@ -22,7 +22,8 @@ const Home: NextPage = () => {
           pellentesque diam. Aliquam ultrices sagittis orci a scelerisque purus
           semper eget duis.
         </p> */}
-          <DepicConsole></DepicConsole>
+          {/* <DepicConsole></DepicConsole> */}
+          <WhiteBoard></WhiteBoard>
         </>
       </AppWrapper>
     </div>
