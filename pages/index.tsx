@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import AppWrapper from '../components/AppWrapper';
+import DepicConsole from '../components/icons/DepicConsole';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
@@ -12,15 +13,15 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppWrapper>
-        <p>
+        {/* <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut aliquam
           purus sit amet. Risus nec feugiat in fermentum. Ac felis donec et odio
           pellentesque diam. Aliquam ultrices sagittis orci a scelerisque purus
           semper eget duis.
-        </p>
+        </p> */}
+        <DepicConsole></DepicConsole>
       </AppWrapper>
-      {/* <WhiteBoard></WhiteBoard> */}
     </div>
   );
 };
