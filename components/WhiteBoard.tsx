@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import ConnectWalletButton from './buttons/ConnectWalletButton';
 import MintButton from './buttons/MintButton';
+import ConsoleTitle from './ConsoleTitle';
 import Frame from './Frame';
 
 const Wrapper = styled.div`
@@ -22,6 +23,7 @@ const ConnectButtonPosition = styled.div`
 export default function WhiteBoard() {
   return (
     <Wrapper>
+      <ConsoleTitle></ConsoleTitle>
       <ConnectButtonPosition>
         <ConnectWalletButton></ConnectWalletButton>
       </ConnectButtonPosition>

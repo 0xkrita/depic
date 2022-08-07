@@ -12,7 +12,7 @@ const SvgName = (props: SVGProps<SVGSVGElement>) => (
     >
       {'DePic'}
       <tspan x={200.11} y={0} fontSize={12} fill="#000">
-        {'c'}
+        {/* {'c'} */}
       </tspan>
     </text>
   </svg>
