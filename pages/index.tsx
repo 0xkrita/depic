@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import AppWrapper from '../components/AppWrapper';
 import WhiteBoard from '../components/WhiteBoard';
 import styles from '../styles/Home.module.css';
@@ -12,6 +13,15 @@ const Home: NextPage = () => {
         <meta name="description" content="A Hackathon Project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div>
+        <Image
+          alt="KodeLife"
+          src="/images/KodeLife.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+      </div>
       <AppWrapper>
         <>
           {/* <MintModal></MintModal> */}

@@ -24,15 +24,6 @@ export default function AppWrapper({ children }: { children: JSX.Element }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider coolMode chains={chains}>
-        {/* <div
-          style={{
-            display: 'flex',
-            justifyContent: 'right',
-            marginTop: '20px',
-            marginRight: '20px',
-          }}
-        > */}
-        {/* </div> */}
         {children}
       </RainbowKitProvider>
     </WagmiConfig>
