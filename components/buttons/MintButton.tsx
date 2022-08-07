@@ -1,3 +1,4 @@
+import { SingleEditionMintableCreator } from '@zoralabs/nft-editions-contracts/typechain';
 import { BigNumber } from 'ethers';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -53,6 +54,21 @@ export default function MintButton() {
     const metadata = await client.store(sampleNFT);
 
     alert(metadata);
+
+    let dynamicSketch = {} as SingleEditionMintableCreator;
+
+    await dynamicSketch.createEdition(
+      'Testing Token',
+      'TEST',
+      'This is a testing token for all',
+      'https://ipfs.io/ipfsbafybeify52a63pgcshhbtkff4nxxxp2zp5yjn2xw43jcy4knwful7ymmgy',
+      '0x0000000000000000000000000000000000000000000000000000000000000000',
+      '',
+      '0x0000000000000000000000000000000000000000000000000000000000000000',
+      // 1% royalty since BPS
+      10,
+      10
+    );
 
     const { config } = usePrepareSendTransaction({
       request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
