@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import SvgMintButton from '../icons/buttons/MintButton';
+import MintModal from '../MintModal';
 
 const MintButtonSvg = styled.svg`
   position: absolute;
@@ -10,15 +12,25 @@ const MintButtonSvg = styled.svg`
 `;
 
 export default function MintButton() {
-  const fakeOnClick = () => {
-    alert('yes you clicked the mint button');
-  };
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    <button type="button" onClick={fakeOnClick}>
-      <MintButtonSvg>
-        <SvgMintButton></SvgMintButton>
-      </MintButtonSvg>
-    </button>
+    <>
+      <button type="button" onClick={handleShow}>
+        <MintButtonSvg>
+          <SvgMintButton></SvgMintButton>
+        </MintButtonSvg>
+      </button>
+
+      {show && (
+        <>
+          <MintModal></MintModal>
+          <button onClick={handleClose}>[x]</button>
+        </>
+      )}
+    </>
   );
 }

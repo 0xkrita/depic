@@ -1,3 +1,5 @@
+import PopupFrame from './icons/ModalPopUp';
+
 export default function MintModal() {
-  return <p>jaja</p>;
+  return <PopupFrame></PopupFrame>;
 }
