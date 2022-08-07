@@ -5,6 +5,7 @@ import HelpButton from './buttons/HelpButton';
 import MintButton from './buttons/MintButton';
 import ConsoleTitle from './ConsoleTitle';
 import Frame from './Frame';
+import PaintPalette from './PaintPalette';
 
 const Wrapper = styled.div`
   width: 1920px;
@@ -30,6 +31,7 @@ export default function WhiteBoard() {
         <ConnectWalletButton></ConnectWalletButton>
       </ConnectButtonPosition>
       <Frame></Frame>
+      <PaintPalette></PaintPalette>
       <MintButton></MintButton>
     </Wrapper>
   );
