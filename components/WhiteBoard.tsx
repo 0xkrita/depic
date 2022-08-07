@@ -1,6 +1,7 @@
 // import { Excalidraw } from '@excalidraw/excalidraw';
 import styled from 'styled-components';
 import ConnectWalletButton from './buttons/ConnectWalletButton';
+import HelpButton from './buttons/HelpButton';
 import MintButton from './buttons/MintButton';
 import ConsoleTitle from './ConsoleTitle';
 import Frame from './Frame';
@@ -24,6 +25,7 @@ export default function WhiteBoard() {
   return (
     <Wrapper>
       <ConsoleTitle></ConsoleTitle>
+      <HelpButton></HelpButton>
       <ConnectButtonPosition>
         <ConnectWalletButton></ConnectWalletButton>
       </ConnectButtonPosition>
