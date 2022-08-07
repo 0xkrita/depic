@@ -87,7 +87,10 @@ export default function MintButton() {
 
   return (
     <>
-      <button type="button" onClick={mint}>
+      <button
+        type="button"
+        onClick={() => alert(`insert minting zora editions logic`)}
+      >
         <MintButtonSvg>
           <SvgMintButton></SvgMintButton>
         </MintButtonSvg>

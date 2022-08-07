@@ -59,8 +59,11 @@ const EraseSpace = styled.svg`
 
 export default function EraseButton() {
   return (
-    <EraseSpace>
-      <SvgEraseButton></SvgEraseButton>
-    </EraseSpace>
+    <button type="button" onClick={() => alert(`ERASE EVERYTHING`)}>
+      {' '}
+      <EraseSpace>
+        <SvgEraseButton></SvgEraseButton>
+      </EraseSpace>
+    </button>
   );
 }

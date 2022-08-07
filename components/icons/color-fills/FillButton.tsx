@@ -59,8 +59,10 @@ const FillSpace = styled.svg`
 
 export default function FillButton() {
   return (
-    <FillSpace>
-      <SvgFillButton></SvgFillButton>
-    </FillSpace>
+    <button type="button" onClick={() => alert(`this is the draw button`)}>
+      <FillSpace>
+        <SvgFillButton></SvgFillButton>
+      </FillSpace>
+    </button>
   );
 }
