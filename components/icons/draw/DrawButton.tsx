@@ -60,7 +60,9 @@ const DrawSpace = styled.svg`
 export default function DrawButton() {
   return (
     <DrawSpace>
-      <SvgDrawButton></SvgDrawButton>
+      <button onClick={() => alert('please start drawing ma G')}>
+        <SvgDrawButton></SvgDrawButton>
+      </button>
     </DrawSpace>
   );
 }
