@@ -26,7 +26,7 @@ const RedPaint = styled.svg`
   position: absolute;
   width: 73px;
   height: 73px;
-  left: 565px;
+  left: 552px;
   top: 814px;
   border-radius: 0px;
   background: #000000;

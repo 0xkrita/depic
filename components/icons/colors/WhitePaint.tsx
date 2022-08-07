@@ -5,7 +5,7 @@ const WhitePaint = styled.svg`
   position: absolute;
   width: 73px;
   height: 73px;
-  left: 480px;
+  left: 470px;
   top: 814px;
   border-radius: 0px;
   background: #000000;
