@@ -1,8 +1,6 @@
 import { SingleEditionMintableCreator } from '@zoralabs/nft-editions-contracts/typechain';
-import { BigNumber } from 'ethers';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { usePrepareSendTransaction, useSendTransaction } from 'wagmi';
 import { client } from '../../utils/storage';
 import SvgMintButton from '../icons/buttons/MintButton';
 
@@ -70,21 +68,21 @@ export default function MintButton() {
       10
     );
 
-    const { config } = usePrepareSendTransaction({
-      request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
-    });
-    const { data, isLoading, isSuccess, sendTransaction } =
-      useSendTransaction(config);
+    // const { config } = usePrepareSendTransaction({
+    //   request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
+    // });
+    // const { data, isLoading, isSuccess, sendTransaction } =
+    //   useSendTransaction(config);
 
-    return (
-      <div>
-        <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
-          Send Transaction
-        </button>
-        {isLoading && <div>Check Wallet</div>}
-        {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-      </div>
-    );
+    // return (
+    //   <div>
+    //     <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
+    //       Send Transaction
+    //     </button>
+    //     {isLoading && <div>Check Wallet</div>}
+    //     {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
+    //   </div>
+    // );
   };
 
   return (
