@@ -12,6 +12,8 @@ This project is made possible with:
 - Node.js > lts/gallium
 - Next.js
 - React.js
+- Wagmi
+  - TODO: to send mint transaction with WAGMI
 - styled-components + tailwind.css
 - Uncountable creative design effort
 
