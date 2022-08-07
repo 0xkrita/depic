@@ -15,6 +15,7 @@ const ButtonPosition = styled.div`
   right: 30.74%;
   top: 5.64%;
   bottom: 83.92%;
+  z-index: 1;
 `;
 
 export default function WhiteBoard() {
