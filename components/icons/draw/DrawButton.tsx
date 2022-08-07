@@ -1,4 +1,5 @@
 import { SVGProps } from 'react';
+import styled from 'styled-components';
 
 const SvgDrawButton = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -45,4 +46,21 @@ const SvgDrawButton = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default SvgDrawButton;
+const DrawSpace = styled.svg`
+  position: absolute;
+  height: 175.98806762695312px;
+  width: 175.98806762695312px;
+  left: 200.505859375px;
+  top: 200.5059661865234375px;
+  border-radius: 0px;
+  border-radius: 0px;
+  z-index: 1;
+`;
+
+export default function DrawButton() {
+  return (
+    <DrawSpace>
+      <SvgDrawButton></SvgDrawButton>
+    </DrawSpace>
+  );
+}
