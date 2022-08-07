@@ -1,6 +1,7 @@
 // import { Excalidraw } from '@excalidraw/excalidraw';
 import styled from 'styled-components';
 import ConnectWalletButton from './buttons/ConnectWalletButton';
+import MintButton from './buttons/MintButton';
 import Frame from './Frame';
 
 const Wrapper = styled.div`
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const ButtonPosition = styled.div`
+const ConnectButtonPosition = styled.div`
   position: relative;
   left: 50.34%;
   right: 30.74%;
@@ -21,10 +22,11 @@ const ButtonPosition = styled.div`
 export default function WhiteBoard() {
   return (
     <Wrapper>
-      <ButtonPosition>
+      <ConnectButtonPosition>
         <ConnectWalletButton></ConnectWalletButton>
-      </ButtonPosition>
+      </ConnectButtonPosition>
       <Frame></Frame>
+      <MintButton></MintButton>
     </Wrapper>
   );
 }

@@ -9,6 +9,7 @@ Detailed mockups: [here](interface/)
 ## Usage
 
 This project is made possible with:
+
 - Node.js > lts/gallium
 - Next.js
 - React.js
@@ -18,13 +19,15 @@ This project is made possible with:
 - Uncountable creative design effort
 
 To start with the repository, run:
+
 ```sh
 > nvm install
 > nvm use
 > yarn
 ```
 
-To start developing: 
+To start developing:
+
 ```sh
 > yarn dev
 ```
