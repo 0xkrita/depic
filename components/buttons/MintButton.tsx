@@ -1,6 +1,6 @@
-import { SingleEditionMintableCreator } from '@zoralabs/nft-editions-contracts/typechain';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { randomBigInt } from '../../utils/number';
 import { client } from '../../utils/storage';
 import SvgMintButton from '../icons/buttons/MintButton';
 
@@ -21,20 +21,21 @@ export default function MintButton() {
   const mint = async () => {
     const imageOriginUrl =
       'https://user-images.githubusercontent.com/87873179/144324736-3f09a98e-f5aa-4199-a874-13583bf31951.jpg';
+    // TODO: use swr for better typing
     const image = await fetch(imageOriginUrl)
       .then((r) => r.blob())
-      .catch((r) => {
+      .catch((r: Response) => {
         if (!r.ok) {
           throw new Error(
-            `error fetching image: [${r.statusCode}]: ${r.status}`
+            `error fetching image: [${r.status}]: ${r.statusText}`
           );
         }
         return r.blob();
       });
     const sampleNFT = {
       image, // use image Blob as `image` field
-      name: "Storing the World's Most Valuable Virtual Assets with NFT.Storage",
-      description: 'The metaverse is here. Where is it all being stored?',
+      name: `NFT STORAGE TEST #${randomBigInt()}`,
+      description: 'GO WITH THE FLOW',
       properties: {
         type: 'blog-post',
         origins: {
@@ -51,22 +52,22 @@ export default function MintButton() {
 
     const metadata = await client.store(sampleNFT);
 
-    alert(metadata);
+    console.log(JSON.stringify(metadata, null, 2));
 
-    let dynamicSketch = {} as SingleEditionMintableCreator;
+    // let dynamicSketch = {} as SingleEditionMintableCreator;
 
-    await dynamicSketch.createEdition(
-      'Testing Token',
-      'TEST',
-      'This is a testing token for all',
-      'https://ipfs.io/ipfsbafybeify52a63pgcshhbtkff4nxxxp2zp5yjn2xw43jcy4knwful7ymmgy',
-      '0x0000000000000000000000000000000000000000000000000000000000000000',
-      '',
-      '0x0000000000000000000000000000000000000000000000000000000000000000',
-      // 1% royalty since BPS
-      10,
-      10
-    );
+    // await dynamicSketch.createEdition(
+    //   'Testing Token',
+    //   'TEST',
+    //   'This is a testing token for all',
+    //   'https://ipfs.io/ipfsbafybeify52a63pgcshhbtkff4nxxxp2zp5yjn2xw43jcy4knwful7ymmgy',
+    //   '0x0000000000000000000000000000000000000000000000000000000000000000',
+    //   '',
+    //   '0x0000000000000000000000000000000000000000000000000000000000000000',
+    //   // 1% royalty since BPS
+    //   10,
+    //   10
+    // );
 
     // const { config } = usePrepareSendTransaction({
     //   request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
@@ -87,10 +88,7 @@ export default function MintButton() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => alert(`insert minting zora editions logic`)}
-      >
+      <button type="button" onClick={mint}>
         <MintButtonSvg>
           <SvgMintButton></SvgMintButton>
         </MintButtonSvg>
