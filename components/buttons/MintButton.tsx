@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { randomBigInt } from '../../utils/number';
-import { client } from '../../utils/storage';
 import SvgMintButton from '../icons/buttons/MintButton';
 
 const MintButtonSvg = styled.svg`
@@ -12,50 +10,22 @@ const MintButtonSvg = styled.svg`
   top: 774px;
 `;
 
-export default function MintButton() {
+export default function MintButton({ img }: { img: Blob }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const mint = async () => {
-    const imageOriginUrl =
-      'https://user-images.githubusercontent.com/87873179/144324736-3f09a98e-f5aa-4199-a874-13583bf31951.jpg';
-    // TODO: use swr for better typing
-    const image = await fetch(imageOriginUrl)
-      .then((r) => r.blob())
-      .catch((r: Response) => {
-        if (!r.ok) {
-          throw new Error(
-            `error fetching image: [${r.status}]: ${r.statusText}`
-          );
-        }
-        return r.blob();
-      });
-    const sampleNFT = {
-      image, // use image Blob as `image` field
-      name: `NFT STORAGE TEST #${randomBigInt()}`,
-      description: 'GO WITH THE FLOW',
-      properties: {
-        type: 'blog-post',
-        origins: {
-          http: 'https://nft.storage/blog/post/2021-11-30-hello-world-nft-storage/',
-          ipfs: 'ipfs://bafybeieh4gpvatp32iqaacs6xqxqitla4drrkyyzq6dshqqsilkk3fqmti/blog/post/2021-11-30-hello-world-nft-storage/',
-        },
-        authors: [{ name: 'David Choi' }],
-        content: {
-          'text/markdown':
-            "The last year has witnessed the explosion of NFTs onto the world's mainstage. From fine art to collectibles to music and media, NFTs are quickly demonstrating just how quickly grassroots Web3 communities can grow, and perhaps how much closer we are to mass adoption than we may have previously thought. <... remaining content omitted ...>",
-        },
-      },
-    };
-
-    const metadata = await client.store(sampleNFT);
-
-    console.log(JSON.stringify(metadata, null, 2));
+    // const image = new Blob(['logo'], { type: 'image/png'});
+    const request = new Request(`/api/mint`, {
+      method: 'POST',
+      body: img,
+    });
+    const res = await fetch(request);
+    console.log(res.json());
 
     // let dynamicSketch = {} as SingleEditionMintableCreator;
-
     // await dynamicSketch.createEdition(
     //   'Testing Token',
     //   'TEST',

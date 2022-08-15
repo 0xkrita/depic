@@ -1,11 +1,15 @@
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import AppWrapper from '../components/AppWrapper';
-import WhiteBoard from '../components/WhiteBoard';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const WhiteBoard = dynamic(() => import('../components/WhiteBoard'), {
+    ssr: false,
+  });
+
   return (
     <div className={styles.container}>
       <Head>

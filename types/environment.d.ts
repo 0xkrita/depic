@@ -1,6 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
+      // just remmeber, only NEXT_PUBLIC_* keys will be exposed to clients
       GITHUB_AUTH_TOKEN: string;
       NODE_ENV: 'development' | 'production';
       NFT_STORAGE_API_KEY: 'string';

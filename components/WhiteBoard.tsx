@@ -1,4 +1,5 @@
 // import { Excalidraw } from '@excalidraw/excalidraw';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ConnectWalletButton from './buttons/ConnectWalletButton';
 import HelpButton from './buttons/HelpButton';
@@ -26,6 +27,20 @@ const ConnectButtonPosition = styled.div`
 `;
 
 export default function WhiteBoard() {
+  const canvas = useRef<HTMLCanvasElement>(null);
+
+  const [doodle, setDoodle] = useState<Blob>(new Blob([]));
+
+  useEffect(() => {
+    // TODO: refactor this into a hook useCanvas
+    const ctx = canvas.current!.getContext('2d');
+    ctx!.fillStyle = 'green';
+    ctx!.fillRect(10, 10, 150, 100);
+    canvas.current!.toBlob((blob) => {
+      setDoodle(blob!);
+    }, 'image/jpeg');
+  });
+
   return (
     <Wrapper>
       <ConsoleTitle></ConsoleTitle>
@@ -37,8 +52,9 @@ export default function WhiteBoard() {
       <FillButton></FillButton>
       <EraseButton></EraseButton>
       <Frame></Frame>
+      <canvas ref={canvas}></canvas>
       <PaintPalette></PaintPalette>
-      <MintButton></MintButton>
+      <MintButton img={doodle}></MintButton>
     </Wrapper>
   );
 }
