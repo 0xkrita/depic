@@ -58,7 +58,7 @@ export default function MintButton({ img }: { img: Blob }) {
 
   return (
     <>
-      <button type="button" onClick={mint}>
+      <button type="button" onClick={() => alert('WIP')}>
         <MintButtonSvg>
           <SvgMintButton></SvgMintButton>
         </MintButtonSvg>
