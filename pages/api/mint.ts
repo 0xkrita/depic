@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Blob } from 'nft.storage';
-import { TokenInput } from 'nft.storage/dist/src/lib/interface';
+import type { Token, TokenInput } from 'nft.storage/dist/src/lib/interface';
 import getRawBody from 'raw-body';
 import { randomBigInt } from '../../utils/number';
 import { client } from '../../utils/storage';
@@ -11,17 +11,19 @@ export const config = {
   },
 };
 
-type Data = {
-  status: string;
-};
-
+/**
+ * @todo make it into a react hook @see useMint
+ * @param req
+ * @param res
+ */
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<Token<TokenInput>>
 ) {
   if (req.method === 'POST') {
     const body = await getRawBody(req);
 
+    // TODO: swap the text
     const sampleNFT: TokenInput = {
       image: new Blob([body], { type: 'image/jpeg' }),
       name: `NFT STORAGE TEST #${randomBigInt()}`,

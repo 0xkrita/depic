@@ -16,8 +16,8 @@ export default function MintButton({ img }: { img: Blob }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Rate limiting
   const mint = async () => {
-    // const image = new Blob(['logo'], { type: 'image/png'});
     const request = new Request(`/api/mint`, {
       method: 'POST',
       body: img,
