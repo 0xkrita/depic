@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import SvgMintButton from '../icons/buttons/MintButton';
+import SvgRedmintbutton from '../icons/buttons/RedMintButton';
+import Loading from '../icons/text/LoadingMint';
 
 const MintButtonSvg = styled.svg`
   position: absolute;
@@ -11,19 +13,29 @@ const MintButtonSvg = styled.svg`
 `;
 
 export default function MintButton({ img }: { img: Blob }) {
-  const [show, setShow] = useState(false);
+  const [savedToIPFS, setSavedToIPFS] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleMint = () => {
+    setIsLoading(true);
+    mint()
+      .then(() => setSavedToIPFS(true))
+      .then(() => setIsLoading(false));
+  };
 
   // Rate limiting
   const mint = async () => {
-    const request = new Request(`/api/mint`, {
-      method: 'POST',
-      body: img,
+    // const res = await fetch(new Request(`/api/mint`, {
+    //   method: 'POST',
+    //   body: img,
+    // }));
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('TIMEOUT');
+        resolve({});
+      }, 1500);
     });
-    const res = await fetch(request);
-    console.log(res.json());
 
     // let dynamicSketch = {} as SingleEditionMintableCreator;
     // await dynamicSketch.createEdition(
@@ -58,23 +70,21 @@ export default function MintButton({ img }: { img: Blob }) {
 
   return (
     <>
-      <button type="button" onClick={() => alert('WIP')}>
+      <button
+        type="button"
+        onClick={handleMint}
+        disabled={isLoading || savedToIPFS}
+      >
         <MintButtonSvg>
-          <SvgMintButton></SvgMintButton>
+          {isLoading ? (
+            <Loading></Loading>
+          ) : !savedToIPFS ? (
+            <SvgMintButton></SvgMintButton>
+          ) : (
+            <SvgRedmintbutton></SvgRedmintbutton>
+          )}
         </MintButtonSvg>
       </button>
-
-      {/* <button type="button" onClick={handleShow}>
-        <MintButtonSvg>
-          <SvgMintButton></SvgMintButton>
-        </MintButtonSvg>
-      </button>
-      {show && (
-        <>
-          <MintModal></MintModal>
-          <button onClick={handleClose}>[x]</button>
-        </>
-      )} */}
     </>
   );
 }

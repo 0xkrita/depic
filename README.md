@@ -1,6 +1,6 @@
 # Depic
 
-Hackathon project for [Metabolism](https://zora.ethglobal.com/) 2022.
+Hackathon project for [Metabolism](https://zora.ethglobal.com/) 2022. Submission: [here](https://ethglobal.com/showcase/depic-11iy6)
 
 Detailed mockups: [here](interface/)
 
