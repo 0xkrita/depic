@@ -58,9 +58,7 @@ const ConnectWalletButton = () => (
             }
 
             return (
-              <div
-                style={{ display: 'flex', gap: 12, justifyContent: 'right' }}
-              >
+              <div>
                 <button
                   onClick={openChainModal}
                   style={{ display: 'flex', alignItems: 'center' }}
@@ -72,7 +70,7 @@ const ConnectWalletButton = () => (
                         background: chain.iconBackground,
                         width: 12,
                         height: 12,
-                        borderRadius: 999,
+                        borderRadius: 30,
                         overflow: 'hidden',
                         marginRight: 4,
                       }}
@@ -82,6 +80,7 @@ const ConnectWalletButton = () => (
                           alt={chain.name ?? 'Chain icon'}
                           src={chain.iconUrl}
                           style={{ width: 12, height: 12 }}
+                          layout="fill"
                         />
                       )}
                     </div>
