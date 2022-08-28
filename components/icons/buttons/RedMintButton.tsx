@@ -44,13 +44,13 @@ const SvgRedmintbutton = (props: SVGProps<SVGSVGElement>) => (
         />
         <circle cx={113} cy={113} r={94.7} fill="#ff3f45" />
         <text
-          fontSize={45.23}
+          fontSize={40.23}
           fill="#fff"
           fontFamily="Helvetica-Bold, Helvetica"
           fontWeight={700}
         >
-          <tspan x={53.41} y={131.37}>
-            {'MINT!'}
+          <tspan x={30.41} y={131.37}>
+            {'MINTED!'}
           </tspan>
         </text>
       </g>

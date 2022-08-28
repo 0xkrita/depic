@@ -952,10 +952,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@rainbow-me/rainbowkit@^0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-0.4.5.tgz#bebd3aeae17156f1abc3534e02001e8ba1c7ba2c"
-  integrity sha512-9JikVOkkaK41T3a1Tg8VK1h92QDJsC9Fk7vSkEmNI99gM9MKRdbsrHyRwM1Z1U/0I/PnYAi8CvShfjwfNw5jAg==
+"@rainbow-me/rainbowkit@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-0.4.8.tgz#1efa3b05abc7f93129db0fe4bf8db13ad6ff3d48"
+  integrity sha512-xtrMSgbXmNtZXiehiBHx9cOslGXAYRnTIUQPAn13XTZjwwyJiwKHw6nSlKEb6OvIFaCBeu2htRAnxMnWNzagOA==
   dependencies:
     "@vanilla-extract/css" "1.7.0"
     "@vanilla-extract/dynamic" "2.0.2"
