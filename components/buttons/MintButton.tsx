@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import type { Token, TokenInput } from 'nft.storage/dist/src/lib/interface';
+import { useReducer } from 'react';
 import styled from 'styled-components';
+import { wrapJsonResolver } from '../../utils/stub';
 import SvgMintButton from '../icons/buttons/MintButton';
 import SvgRedmintbutton from '../icons/buttons/RedMintButton';
 import Loading from '../icons/text/LoadingMint';
@@ -12,31 +14,79 @@ const MintButtonSvg = styled.svg`
   top: 774px;
 `;
 
+export enum ActionType {
+  MINT_START,
+  IPFS_SAVED,
+  MINT_ERROR,
+}
+
+export type MintState = {
+  loading: boolean;
+  ipfsPayload?: Token<TokenInput>;
+  error: boolean;
+};
+export type MintAction = {
+  type: ActionType;
+  payload?: Token<TokenInput>;
+};
+
+const mintReducer = (state: MintState, action: MintAction): MintState => {
+  switch (action.type) {
+    case ActionType.MINT_START:
+      return {
+        loading: true,
+        error: false,
+      };
+    case ActionType.IPFS_SAVED:
+      return {
+        ...state,
+        loading: false,
+        ipfsPayload: action.payload,
+      };
+    case ActionType.MINT_ERROR:
+      return {
+        error: true,
+        loading: false,
+        ipfsPayload: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export default function MintButton({ img }: { img: Blob }) {
-  const [savedToIPFS, setSavedToIPFS] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(mintReducer, {
+    loading: false,
+    error: false,
+  });
 
   const handleMint = () => {
-    setIsLoading(true);
-    mint()
-      .then(() => setSavedToIPFS(true))
-      .then(() => setIsLoading(false));
+    dispatch({ type: ActionType.MINT_START });
+    saveToIPFS()
+      .then((res) => res.json())
+      .then((data: Token<TokenInput>) => {
+        dispatch({ type: ActionType.IPFS_SAVED, payload: data });
+        console.log(data);
+      })
+      .catch(() => dispatch({ type: ActionType.MINT_ERROR }));
   };
 
-  // Rate limiting
+  // // Rate limiting on API (with Next middleware maybe)
+  // const saveToIPFS = async () =>
+  //   fetch(
+  //     new Request(`/api/mint`, {
+  //       method: 'POST',
+  //       body: img,
+  //     })
+  //   );
+
+  // timout util stub for testing ipfs saves
+  const saveToIPFS = wrapJsonResolver({
+    ipnft: 'bafyreiadodu7zbhhzzhcribkbsz3g7ealhcsendvvr2ilb5zvsbi6c7qre',
+    url: 'ipfs://bafyreiadodu7zbhhzzhcribkbsz3g7ealhcsendvvr2ilb5zvsbi6c7qre/metadata.json',
+  } as Token<TokenInput>);
+
   const mint = async () => {
-    // const res = await fetch(new Request(`/api/mint`, {
-    //   method: 'POST',
-    //   body: img,
-    // }));
-
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('TIMEOUT');
-        resolve({});
-      }, 1500);
-    });
-
     // let dynamicSketch = {} as SingleEditionMintableCreator;
     // await dynamicSketch.createEdition(
     //   'Testing Token',
@@ -50,22 +100,6 @@ export default function MintButton({ img }: { img: Blob }) {
     //   10,
     //   10
     // );
-
-    // const { config } = usePrepareSendTransaction({
-    //   request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
-    // });
-    // const { data, isLoading, isSuccess, sendTransaction } =
-    //   useSendTransaction(config);
-
-    // return (
-    //   <div>
-    //     <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
-    //       Send Transaction
-    //     </button>
-    //     {isLoading && <div>Check Wallet</div>}
-    //     {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-    //   </div>
-    // );
   };
 
   return (
@@ -73,12 +107,12 @@ export default function MintButton({ img }: { img: Blob }) {
       <button
         type="button"
         onClick={handleMint}
-        disabled={isLoading || savedToIPFS}
+        disabled={state.loading || !!state.ipfsPayload}
       >
         <MintButtonSvg>
-          {isLoading ? (
+          {state.loading ? (
             <Loading></Loading>
-          ) : !savedToIPFS ? (
+          ) : !state.ipfsPayload ? (
             <SvgMintButton></SvgMintButton>
           ) : (
             <SvgRedmintbutton></SvgRedmintbutton>

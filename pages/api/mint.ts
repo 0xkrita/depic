@@ -26,15 +26,14 @@ export default async function handler(
     // TODO: swap the text
     const sampleNFT: TokenInput = {
       image: new Blob([body], { type: 'image/jpeg' }),
-      name: `NFT STORAGE TEST #${randomBigInt()}`,
+      name: `DEPIC #${randomBigInt()}`,
       description: 'GO WITH THE FLOW',
       properties: {
-        type: 'blog-post',
         origins: {
           http: 'https://nft.storage/blog/post/2021-11-30-hello-world-nft-storage/',
           ipfs: 'ipfs://bafybeieh4gpvatp32iqaacs6xqxqitla4drrkyyzq6dshqqsilkk3fqmti/blog/post/2021-11-30-hello-world-nft-storage/',
         },
-        authors: [{ name: 'David Choi' }],
+        authors: [{ name: 'David Choi' }], // use ENS or something
         content: {
           'text/markdown':
             "The last year has witnessed the explosion of NFTs onto the world's mainstage. From fine art to collectibles to music and media, NFTs are quickly demonstrating just how quickly grassroots Web3 communities can grow, and perhaps how much closer we are to mass adoption than we may have previously thought. <... remaining content omitted ...>",
@@ -42,8 +41,6 @@ export default async function handler(
       },
     };
     const metadata = await client.store(sampleNFT);
-    // const metadata = {status: 'Ok'};
-    console.log(JSON.stringify(metadata, null, 2));
     res.status(200).json(metadata);
   } else {
     res.status(400);
