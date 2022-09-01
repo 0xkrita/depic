@@ -4,7 +4,8 @@ declare global {
       // just remmeber, only NEXT_PUBLIC_* keys will be exposed to clients
       NODE_ENV: 'development' | 'production';
       NFT_STORAGE_API_KEY: 'string';
-      ALCHEMY_MUMBAI_KEY: 'string';
+      ALCHEMY_GOERLI_KEY: 'string';
+      GOERLI_ZORA_DROP_CONTRACT: 'string';
     }
   }
 }
